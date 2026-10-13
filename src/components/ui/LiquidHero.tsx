@@ -16,26 +16,16 @@ export default function LiquidHero() {
 
       {/* ─── Hero Content Layout (2-Column Desktop, Stacked on Mobile) ─── */}
       <div className={styles.heroContainer}>
-        {/* Left Column: 4 Glowing Blue Frosted Glass Pebbles */}
-        <div className={styles.emblemWrapper}>
-          <div className={styles.emblemAura} aria-hidden="true" />
-          <Image
-            src="/images/liquid/nyx_pebbles_transparent.png"
-            alt="NYX Emblem"
-            width={480}
-            height={480}
-            priority
-            className={styles.emblemImage}
-          />
-        </div>
+        {/* Left Column: Spacer aligning with the WebGL interactive liquid pebbles */}
+        <div className={styles.emblemSpacer} aria-hidden="true" />
 
         {/* Right Column: High-End Architectural Typography */}
         <div className={styles.typographyWrapper}>
           <h1 className={styles.heroTitle}>
-            <span className={styles.titleLine}>IDEAS &amp;</span>
-            <span className={styles.titleLine}>PEOPLE</span>
-            <span className={styles.titleLine}>EXPERIENCES</span>
-            <span className={styles.titleLine}>THAT EXIST</span>
+            <span className={styles.titleLine}>WITH NYX, </span>
+            <span className={styles.titleLine}>YOU DON'T</span>
+            <span className={styles.titleLine}>JUST APPEAR</span>
+            <span className={styles.titleLine}>NOW YOU EXIST</span>
           </h1>
         </div>
       </div>

@@ -180,125 +180,81 @@ export default function LiquidSimulation({
     ctx2D.fillRect(0, 0, width, height);
 
     const textTexture = new THREE.CanvasTexture(canvas2D);
-    textTexture.minFilter = THREE.NearestFilter;
-    textTexture.magFilter = THREE.NearestFilter;
+    textTexture.minFilter = THREE.LinearFilter;
+    textTexture.magFilter = THREE.LinearFilter;
     textTexture.format = THREE.RGBAFormat;
 
-    const drawNyxVectorLogo = (w: number, h: number) => {
-      ctx2D.fillStyle = '#000000';
-      ctx2D.fillRect(0, 0, w, h);
+    const bgImg = new Image();
+    bgImg.crossOrigin = 'anonymous';
+    bgImg.src = '/images/liquid/nyx_hero_bg_exact.png';
 
-      // Centered, bold architectural NYX branding
-      const baseFontSize = Math.min(w * 0.26, h * 0.46);
+    const pebblesImg = new Image();
+    pebblesImg.crossOrigin = 'anonymous';
+    pebblesImg.src = '/images/liquid/pebbles_hd_transparent.png';
 
-      ctx2D.save();
-      ctx2D.translate(w / 2, h * 0.44); // Positioned slightly above center for optical balance
+    const renderComposite = (w: number, h: number) => {
+      // 1. Draw exact background image or dark carbon gradient fallback
+      if (bgImg.complete && bgImg.naturalWidth > 0) {
+        const imgRatio = bgImg.naturalWidth / bgImg.naturalHeight;
+        const canvasRatio = w / h;
+        let dw = w;
+        let dh = h;
+        let dx = 0;
+        let dy = 0;
 
-      ctx2D.font = `900 ${baseFontSize}px system-ui, -apple-system, sans-serif`;
-      ctx2D.textAlign = 'center';
-      ctx2D.textBaseline = 'middle';
-      ctx2D.letterSpacing = '-0.04em';
+        if (canvasRatio > imgRatio) {
+          dw = w;
+          dh = w / imgRatio;
+          dy = (h - dh) / 2;
+        } else {
+          dh = h;
+          dw = h * imgRatio;
+          dx = (w - dw) / 2;
+        }
+        ctx2D.drawImage(bgImg, dx, dy, dw, dh);
+      } else {
+        // Fallback matching nyx_hero_bg_exact.png: deep carbon left, electric bloom right
+        ctx2D.fillStyle = '#010206';
+        ctx2D.fillRect(0, 0, w, h);
+        const fallbackBloom = ctx2D.createRadialGradient(
+          w * 0.82, h * 0.35, 20,
+          w * 0.82, h * 0.35, Math.max(w, h) * 0.85
+        );
+        fallbackBloom.addColorStop(0, 'rgba(0, 85, 255, 0.7)');
+        fallbackBloom.addColorStop(0.35, 'rgba(0, 45, 195, 0.4)');
+        fallbackBloom.addColorStop(0.70, 'rgba(1, 4, 25, 0.1)');
+        fallbackBloom.addColorStop(1, 'transparent');
+        ctx2D.fillStyle = fallbackBloom;
+        ctx2D.fillRect(0, 0, w, h);
+      }
 
-      const metrics = ctx2D.measureText('NYX');
-      const textHalfW = metrics.width / 2;
+      // 2. Draw high-definition 4-pebbles logo in the left column
+      if (pebblesImg.complete && pebblesImg.naturalWidth > 0) {
+        const screenAspect = w / h;
+        let size: number;
+        let drawX: number;
+        let drawY: number;
 
-      // Chrome specular gradient
-      const chromeGrad = ctx2D.createLinearGradient(
-        -textHalfW,
-        -baseFontSize / 2,
-        textHalfW,
-        baseFontSize / 2
-      );
-      chromeGrad.addColorStop(0, '#FFFFFF');
-      chromeGrad.addColorStop(0.35, '#F1F5F9');
-      chromeGrad.addColorStop(0.7, '#94A3B8');
-      chromeGrad.addColorStop(1, '#FFFFFF');
+        if (screenAspect >= 1.0) {
+          // Desktop: position pebbles in left column
+          size = Math.min(w * 0.38, h * 0.70);
+          drawX = w * 0.11;
+          drawY = (h - size) / 2;
+        } else {
+          // Mobile / narrow viewports: centered in upper portion
+          size = Math.min(w * 0.58, h * 0.38);
+          drawX = (w - size) / 2;
+          drawY = h * 0.16;
+        }
 
-      ctx2D.fillStyle = chromeGrad;
-      ctx2D.fillText('NYX', 0, 0);
+        ctx2D.drawImage(pebblesImg, drawX, drawY, size, size);
+      }
 
-      // Iconic Electric Blue Dot
-      const dotRadius = baseFontSize * 0.085;
-      const dotX = textHalfW + dotRadius * 1.5;
-      const dotY = -baseFontSize * 0.32;
-
-      // Ambient dot glow
-      ctx2D.beginPath();
-      ctx2D.arc(dotX, dotY, dotRadius * 2.2, 0, Math.PI * 2);
-      ctx2D.fillStyle = 'rgba(59, 130, 246, 0.45)';
-      ctx2D.fill();
-
-      // Sharp blue core
-      ctx2D.beginPath();
-      ctx2D.arc(dotX, dotY, dotRadius, 0, Math.PI * 2);
-      ctx2D.fillStyle = '#3B82F6';
-      ctx2D.fill();
-
-      ctx2D.restore();
       textTexture.needsUpdate = true;
     };
 
-    const renderImageOrText = (w: number, h: number) => {
-      // 1. Ambient electric cobalt bloom matching the reference image
-      const bgGrad = ctx2D.createRadialGradient(
-        w * 0.76, h * 0.44, 30,
-        w * 0.76, h * 0.44, Math.max(w, h) * 0.95
-      );
-      bgGrad.addColorStop(0, '#0048ff');    // radiant electric cobalt bloom
-      bgGrad.addColorStop(0.35, '#0026b8'); // rich royal blue
-      bgGrad.addColorStop(0.65, '#001050'); // deep midnight navy
-      bgGrad.addColorStop(1, '#020409');    // deep black slate
-      ctx2D.fillStyle = bgGrad;
-      ctx2D.fillRect(0, 0, w, h);
-
-      if (imagePath) {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => {
-          const screenAspect = w / h;
-          const imgAspect = img.width / img.height;
-          let drawW: number;
-          let drawH: number;
-
-          if (screenAspect < imgAspect) {
-            drawW = w;
-            drawH = drawW / imgAspect;
-          } else {
-            drawH = h;
-            drawW = drawH * imgAspect;
-            if (drawW < w) {
-              drawW = w;
-              drawH = drawW / imgAspect;
-            }
-          }
-
-          const drawX = (w - drawW) / 2;
-          const drawY = (h - drawH) / 2;
-
-          ctx2D.fillStyle = bgGrad;
-          ctx2D.fillRect(0, 0, w, h);
-
-          ctx2D.globalCompositeOperation = 'source-over';
-          ctx2D.drawImage(img, drawX, drawY, drawW, drawH);
-
-          textTexture.needsUpdate = true;
-        };
-        img.onerror = () => {
-          textTexture.needsUpdate = true;
-        };
-        img.src = imagePath;
-      } else if (text) {
-        const fontSize = Math.round(250 * window.devicePixelRatio);
-        ctx2D.fillStyle = '#ffffff';
-        ctx2D.font = `bold ${fontSize}px Arial, sans-serif`;
-        ctx2D.textAlign = 'center';
-        ctx2D.textBaseline = 'middle';
-        ctx2D.fillText(text, w / 2, h / 2);
-        textTexture.needsUpdate = true;
-      } else {
-        textTexture.needsUpdate = true;
-      }
-    };
+    bgImg.onload = () => renderComposite(width, height);
+    pebblesImg.onload = () => renderComposite(width, height);
 
     const handleResize = () => {
       const newW = window.innerWidth * window.devicePixelRatio;
@@ -309,7 +265,7 @@ export default function LiquidSimulation({
       simMaterial.uniforms.resolution.value.set(newW, newH);
       canvas2D.width = newW;
       canvas2D.height = newH;
-      renderImageOrText(newW, newH);
+      renderComposite(newW, newH);
     };
 
     const updateMousePos = (clientX: number, clientY: number) => {
@@ -339,7 +295,7 @@ export default function LiquidSimulation({
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
 
-    renderImageOrText(width, height);
+    renderComposite(width, height);
 
     const animate = () => {
       simMaterial.uniforms.frame.value = frame++;

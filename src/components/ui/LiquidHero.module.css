@@ -16,24 +16,16 @@
   justify-content: center;
   overflow: hidden;
   background-color: #010206;
-  background-image: 
-    radial-gradient(ellipse 85% 75% at 82% 42%, rgba(0, 71, 255, 0.55) 0%, rgba(0, 32, 175, 0.3) 45%, rgba(0, 10, 60, 0.1) 75%, transparent 100%),
-    radial-gradient(circle 700px at 15% 55%, rgba(0, 40, 160, 0.15) 0%, transparent 65%);
+  background-image: url('/images/liquid/nyx_hero_bg_exact.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #FFFFFF;
 }
 
-/* Ambient lighting bloom behind right side typography */
+/* Ambient lighting bloom integrated into background image */
 .ambientLight {
-  position: absolute;
-  top: 10%;
-  right: -5%;
-  width: 65vw;
-  height: 75vh;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 85, 255, 0.4) 0%, rgba(0, 45, 190, 0.2) 45%, transparent 70%);
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 /* 2-Column Content Container */
@@ -49,61 +41,16 @@
   align-items: center;
   justify-content: space-between;
   gap: clamp(2.5rem, 6vw, 7rem);
+  pointer-events: none;
 }
 
-/* Left: 4 Glowing Blue Frosted Glass Pebbles */
-.emblemWrapper {
+/* Left: Spacer aligning with the WebGL interactive liquid pebbles */
+.emblemSpacer {
   position: relative;
   flex: 1 1 48%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   max-width: 520px;
-}
-
-.emblemAura {
-  position: absolute;
-  inset: -15%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 110, 255, 0.5) 0%, rgba(0, 65, 230, 0.22) 50%, transparent 72%);
-  filter: blur(45px);
-  pointer-events: none;
-  z-index: 1;
-  animation: pulseAura 5s ease-in-out infinite alternate;
-}
-
-.emblemImage {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 480px;
-  height: auto;
   aspect-ratio: 1 / 1;
-  object-fit: contain;
-  filter: drop-shadow(0 0 40px rgba(0, 100, 255, 0.65));
-  animation: subtleFloat 6s ease-in-out infinite;
-  user-select: none;
   pointer-events: none;
-}
-
-@keyframes subtleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes pulseAura {
-  0% {
-    opacity: 0.75;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.06);
-  }
 }
 
 /* Right: Minimalist Luxury Typography */
@@ -113,6 +60,7 @@
   flex-direction: column;
   justify-content: center;
   padding-left: clamp(0.5rem, 2vw, 2rem);
+  pointer-events: none;
 }
 
 .heroTitle {
@@ -200,7 +148,7 @@
     padding-bottom: 4rem;
   }
 
-  .emblemWrapper {
+  .emblemSpacer {
     flex: 0 0 auto;
     max-width: 280px;
     width: 60vw;
@@ -231,7 +179,7 @@
     gap: 1.75rem;
   }
 
-  .emblemWrapper {
+  .emblemSpacer {
     max-width: 220px;
     width: 52vw;
   }
