@@ -19,7 +19,8 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    // Immediate trigger on scroll (even ~2-3mm finger movement)
+    const handleScroll = () => setScrolled(window.scrollY > 6);
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -46,19 +47,11 @@ export default function Header() {
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} aria-label="NYX-SaaS – Home">
             <Image
-              src="/images/logo-dark.png"
+              src="/images/nl1.jpeg"
               alt="NYX-SaaS"
-              width={116}
-              height={47}
-              className={`${styles.logoImg} ${styles.logoDark}`}
-              priority
-            />
-            <Image
-              src="/images/logo-light.png"
-              alt="NYX-SaaS"
-              width={116}
-              height={47}
-              className={`${styles.logoImg} ${styles.logoLight}`}
+              width={165}
+              height={56}
+              className={styles.logoImg}
               priority
             />
           </Link>

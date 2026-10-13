@@ -41,12 +41,12 @@ export default function LiquidHero() {
           aria-label="Scroll down"
         >
           <svg
-            width="22"
-            height="22"
+            width="26"
+            height="26"
             viewBox="0 0 24 24"
             fill="none"
             stroke="#FFFFFF"
-            strokeWidth="2.2"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
             className={styles.downArrowIcon}
