@@ -4,8 +4,16 @@
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
   border-bottom: 1px solid transparent;
+}
+
+.hiddenUntilScroll {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .scrolled {

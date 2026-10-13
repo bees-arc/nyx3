@@ -30,12 +30,32 @@ export default function LiquidHero() {
         </div>
       </div>
 
-      {/* ─── Minimal Bottom Scroll Pill ─── */}
+      {/* ─── Minimal Downward White Arrow Scroll Indicator ─── */}
       <div className={styles.heroBottomBar}>
-        <div className={styles.scrollIndicator}>
-          <span className={styles.scrollDot} />
-          <span>Scroll to explore</span>
-        </div>
+        <button
+          type="button"
+          onClick={() => {
+            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+          }}
+          className={styles.scrollArrowBtn}
+          aria-label="Scroll down"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={styles.downArrowIcon}
+            aria-hidden="true"
+          >
+            <line x1="12" y1="4" x2="12" y2="20" />
+            <polyline points="19 13 12 20 5 13" />
+          </svg>
+        </button>
       </div>
     </section>
   );

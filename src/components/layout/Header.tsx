@@ -19,7 +19,8 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -33,11 +34,15 @@ export default function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const isDarkTheme = (pathname === '/' && !scrolled);
+  const isHome = pathname === '/';
+  const isHidden = isHome && !scrolled && !menuOpen;
+  const isDarkTheme = (isHome && !scrolled);
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${isDarkTheme ? styles.darkTheme : styles.lightTheme}`}>
+      <header
+        className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${isDarkTheme ? styles.darkTheme : styles.lightTheme} ${isHidden ? styles.hiddenUntilScroll : ''}`}
+      >
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} aria-label="NYX-SaaS – Home">
             <Image
