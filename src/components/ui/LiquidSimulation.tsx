@@ -154,7 +154,9 @@ export default function LiquidSimulation({
             vec3 lightDir = normalize(vec3(-3.0, 10.0, 3.0));
             float specular = pow(max(0.0, dot(normal, lightDir)), 60.0) * 1.5;
             
-            gl_FragColor = color + vec4(specular);
+            // Rich electric-blue tinted specular reflection matching the reference visual
+            vec3 specColor = vec3(specular * 0.7, specular * 0.85, specular * 1.25);
+            gl_FragColor = vec4(color.rgb + specColor, color.a);
         }
       `,
       transparent: true,
@@ -237,7 +239,16 @@ export default function LiquidSimulation({
     };
 
     const renderImageOrText = (w: number, h: number) => {
-      ctx2D.fillStyle = '#000000';
+      // 1. Ambient electric cobalt bloom matching the reference image
+      const bgGrad = ctx2D.createRadialGradient(
+        w * 0.76, h * 0.44, 30,
+        w * 0.76, h * 0.44, Math.max(w, h) * 0.95
+      );
+      bgGrad.addColorStop(0, '#0048ff');    // radiant electric cobalt bloom
+      bgGrad.addColorStop(0.35, '#0026b8'); // rich royal blue
+      bgGrad.addColorStop(0.65, '#001050'); // deep midnight navy
+      bgGrad.addColorStop(1, '#020409');    // deep black slate
+      ctx2D.fillStyle = bgGrad;
       ctx2D.fillRect(0, 0, w, h);
 
       if (imagePath) {
@@ -246,32 +257,34 @@ export default function LiquidSimulation({
         img.onload = () => {
           const screenAspect = w / h;
           const imgAspect = img.width / img.height;
-          let drawW: number, drawH: number;
+          let drawW: number;
+          let drawH: number;
 
-          if (screenAspect < 1.0) {
-            // Mobile portrait
-            drawW = 0.84 * w;
+          if (screenAspect < imgAspect) {
+            drawW = w;
             drawH = drawW / imgAspect;
           } else {
-            // Desktop / tablet
-            const targetW = 0.55 * w;
-            const maxH = 0.40 * h;
-            if (targetW / imgAspect > maxH) {
-              drawH = maxH;
-              drawW = drawH * imgAspect;
-            } else {
-              drawW = targetW;
+            drawH = h;
+            drawW = drawH * imgAspect;
+            if (drawW < w) {
+              drawW = w;
               drawH = drawW / imgAspect;
             }
           }
 
           const drawX = (w - drawW) / 2;
-          const drawY = (h * 0.44) - (drawH / 2);
+          const drawY = (h - drawH) / 2;
+
+          ctx2D.fillStyle = bgGrad;
+          ctx2D.fillRect(0, 0, w, h);
+
+          ctx2D.globalCompositeOperation = 'source-over';
           ctx2D.drawImage(img, drawX, drawY, drawW, drawH);
+
           textTexture.needsUpdate = true;
         };
         img.onerror = () => {
-          drawNyxVectorLogo(w, h);
+          textTexture.needsUpdate = true;
         };
         img.src = imagePath;
       } else if (text) {
@@ -283,7 +296,7 @@ export default function LiquidSimulation({
         ctx2D.fillText(text, w / 2, h / 2);
         textTexture.needsUpdate = true;
       } else {
-        drawNyxVectorLogo(w, h);
+        textTexture.needsUpdate = true;
       }
     };
 

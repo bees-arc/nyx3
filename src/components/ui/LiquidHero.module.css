@@ -1,7 +1,10 @@
-/* ═══════════════════════════════════════════
-   Skiper12 Liquid Simulation Hero Section
-   Inspired by Vercel Ship Liquid Hero
-   ═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   NYX Hero Section: High-End Architectural Layout
+   Matches Reference Image:
+   - Deep carbon black on left with 4 glowing blue pebbles
+   - Vibrant electric cobalt bloom on right behind typography
+   - Interactive liquid ripple simulation
+   ══════════════════════════════════════════════════════ */
 
 .heroWrapper {
   position: relative;
@@ -9,150 +12,212 @@
   min-height: 100vh;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #010206;
+  background-image: 
+    radial-gradient(ellipse 85% 75% at 82% 42%, rgba(0, 71, 255, 0.55) 0%, rgba(0, 32, 175, 0.3) 45%, rgba(0, 10, 60, 0.1) 75%, transparent 100%),
+    radial-gradient(circle 700px at 15% 55%, rgba(0, 40, 160, 0.15) 0%, transparent 65%);
   color: #FFFFFF;
 }
 
-.heroContent {
+/* Ambient lighting bloom behind right side typography */
+.ambientLight {
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 65vw;
+  height: 75vh;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 85, 255, 0.4) 0%, rgba(0, 45, 190, 0.2) 45%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 2-Column Content Container */
+.heroContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 6vw, 5rem);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2.5rem, 6vw, 7rem);
+}
+
+/* Left: 4 Glowing Blue Frosted Glass Pebbles */
+.emblemWrapper {
+  position: relative;
+  flex: 1 1 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 520px;
+}
+
+.emblemAura {
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 110, 255, 0.5) 0%, rgba(0, 65, 230, 0.22) 50%, transparent 72%);
+  filter: blur(45px);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulseAura 5s ease-in-out infinite alternate;
+}
+
+.emblemImage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(0, 100, 255, 0.65));
+  animation: subtleFloat 6s ease-in-out infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseAura {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+/* Right: Minimalist Luxury Typography */
+.typographyWrapper {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: clamp(0.5rem, 2vw, 2rem);
+}
+
+.heroTitle {
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-size: clamp(1.85rem, 3.6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: 0.22em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.7);
+  user-select: none;
+}
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Bottom Scroll Pill */
+.heroBottomBar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: clamp(1.75rem, 5vw, 3.5rem);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
   box-sizing: border-box;
   pointer-events: none;
   z-index: 10;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.heroBadge {
+.scrollIndicator {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 1.25rem;
-  pointer-events: auto;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(1, 4, 15, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
-.badgeDot {
+.scrollDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #3B82F6;
-  box-shadow: 0 0 10px #3B82F6;
+  background: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8;
+  animation: pulseDot 2s infinite ease-in-out;
 }
 
-.heroHeadline {
-  font-size: clamp(2.4rem, 5.2vw, 4.75rem);
-  font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
-  max-width: 860px;
-  margin: 0 0 2.5rem;
-  color: #FFFFFF;
-  text-wrap: balance;
-}
-
-.headlineHighlight {
-  font-style: italic;
-  font-family: var(--font-serif, Georgia, serif);
-  font-weight: 400;
-  color: #60A5FA;
-}
-
-.heroMetaBar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.75rem;
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .heroMetaBar {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
   }
 }
 
-.metaGroup {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.5rem, 3.5vw, 3.5rem);
-  text-transform: uppercase;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.8);
-}
+/* Responsive: Tablet / Half-Screen / Mobile */
+@media (max-width: 960px) {
+  .heroContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2.25rem;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
 
-.metaItem {
-  margin: 0;
-  line-height: 1.45;
-}
+  .emblemWrapper {
+    flex: 0 0 auto;
+    max-width: 280px;
+    width: 60vw;
+  }
 
-.metaItemMuted {
-  color: rgba(255, 255, 255, 0.45);
-}
+  .typographyWrapper {
+    flex: 0 0 auto;
+    align-items: center;
+    padding-left: 0;
+  }
 
-.actionGroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  text-transform: uppercase;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
-}
-
-/* Hide meta text on mobile — keep only the CTA button */
-.hideOnMobile {
-  display: flex;
-}
-
-.ctaBtn {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #FFFFFF;
-  color: #000000;
-  font-weight: 600;
-  padding: 0.75rem 1.35rem;
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.ctaBtn:hover {
-  background-color: #3B82F6;
-  color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.45);
-}
-
-.outlineBtn {
-  pointer-events: auto;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.outlineBtn:hover {
-  color: #FFFFFF;
+  .heroTitle {
+    font-size: clamp(1.4rem, 4.8vw, 2.3rem);
+    letter-spacing: 0.20em;
+    line-height: 1.55;
+    text-align: center;
+  }
 }
 
 @media (max-width: 640px) {
@@ -161,45 +226,18 @@
     height: 100svh;
   }
 
-  .heroContent {
-    padding: 1.5rem 1.25rem;
+  .heroContainer {
+    padding: 0 1.25rem;
+    gap: 1.75rem;
   }
 
-  .heroHeadline {
-    font-size: clamp(1.9rem, 9.5vw, 2.8rem);
-    margin-bottom: 1.75rem;
-    line-height: 1;
+  .emblemWrapper {
+    max-width: 220px;
+    width: 52vw;
   }
 
-  .heroBadge {
-    font-size: 0.6875rem;
-    margin-bottom: 0.875rem;
-  }
-
-  .heroMetaBar {
-    gap: 1rem;
-  }
-
-  /* Hide all meta text — only show CTA button */
-  .hideOnMobile {
-    display: none !important;
-  }
-
-  .actionGroup {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .ctaBtn {
-    padding: 0.75rem 1.35rem;
-    font-size: 0.8125rem;
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 400px) {
-  .heroHeadline {
-    font-size: clamp(1.6rem, 9vw, 2.2rem);
+  .heroTitle {
+    font-size: clamp(1.2rem, 5.2vw, 1.75rem);
+    letter-spacing: 0.18em;
   }
 }
