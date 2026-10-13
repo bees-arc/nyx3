@@ -22,9 +22,9 @@ export default function LiquidHero() {
         {/* Right Column: High-End Architectural Typography */}
         <div className={styles.typographyWrapper}>
           <h1 className={styles.heroTitle}>
-            <span className={styles.titleLine}>WITH NYX, </span>
+            <span className={styles.titleLine}>, </span>
             <span className={styles.titleLine}>YOU DON'T</span>
-            <span className={styles.titleLine}>JUST APPEAR</span>
+            <span className={styles.titleLine}>JUST APPEAR.</span>
             <span className={styles.titleLine}>NOW YOU EXIST</span>
           </h1>
         </div>
