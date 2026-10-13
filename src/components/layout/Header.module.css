@@ -1,0 +1,244 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--light-gray);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--page-px);
+  height: 72px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.25s ease;
+}
+
+/* Theme Switching */
+.darkTheme .logoDark {
+  display: block;
+}
+.darkTheme .logoLight {
+  display: none;
+}
+.darkTheme .navLink {
+  color: rgba(255, 255, 255, 0.75);
+}
+.darkTheme .navLink:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.darkTheme .navLink.active {
+  color: #ffffff;
+}
+.darkTheme .menuToggle span {
+  background: #ffffff;
+}
+
+.lightTheme .logoDark {
+  display: none;
+}
+.lightTheme .logoLight {
+  display: block;
+}
+.lightTheme .navLink {
+  color: var(--dark-muted);
+}
+.lightTheme .navLink:hover {
+  color: var(--ink);
+  background: var(--light-gray);
+}
+.lightTheme .navLink.active {
+  color: var(--ink);
+}
+.lightTheme .menuToggle span {
+  background: var(--ink);
+}
+
+/* Desktop Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navLink {
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--dark-muted);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--ink);
+  background: var(--light-gray);
+}
+
+.navLink.active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile Toggle */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menuToggle:hover {
+  background: var(--light-gray);
+}
+
+.menuToggle span {
+  display: block;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease);
+  transform-origin: center;
+}
+
+.menuOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menuOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menuOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 100px var(--page-px) 3rem;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+  visibility: hidden;
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1px solid var(--light-gray);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), color 0.2s;
+}
+
+.mobileMenuOpen .mobileNavLink {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobileNavLink:hover {
+  color: var(--nyx-blue);
+}
+
+.mobileNavCta {
+  color: var(--nyx-blue);
+  border-bottom: none;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+
+.mobileMenuFooter {
+  padding-top: 2rem;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .menuToggle { display: flex; }
+}
+
+@media (max-width: 640px) {
+  /* Keep the blue button but make it compact */
+  .actions > a.btn {
+    padding: 0.45rem 0.875rem;
+    font-size: 0.75rem;
+    gap: 0.35rem;
+  }
+
+  /* Hide the arrow svg inside button on very small screens */
+  .actions > a.btn svg {
+    display: none;
+  }
+}

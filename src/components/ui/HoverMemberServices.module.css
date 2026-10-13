@@ -1,0 +1,344 @@
+/* ═══════════════════════════════════════════
+   Skiper6 Full-Screen Services Section
+   Icons & NYX Web Colors (#2563EB / #3B82F6)
+   ═══════════════════════════════════════════ */
+
+.skiper6Section {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  background-color: var(--dark-bg, #0E0E0C);
+  color: #F1F1F1;
+  padding: 1.5rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.sectionPlaceholder {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Ambient glow in the center - pure radial gradient without GPU blur cost */
+.bgGlowOrb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  width: 750px;
+  height: 480px;
+  background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.16) 0%, rgba(37, 99, 235, 0.07) 35%, rgba(37, 99, 235, 0.02) 60%, transparent 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── AVATAR ICON ROW ─── */
+.avatarsWrapper {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  max-width: 95%;
+  min-height: auto;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.avatarCard {
+  width: 90px;
+  height: 96px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  background: #141412;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 9px 6px 8px;
+  transform: translateZ(0);
+  transition: transform 0.22s cubic-bezier(0.19, 1, 0.22, 1),
+              border-color 0.22s cubic-bezier(0.19, 1, 0.22, 1),
+              box-shadow 0.22s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+}
+
+.avatarCard:hover,
+.avatarCardActive {
+  transform: translateY(-4px) scale(1.04) translateZ(0);
+}
+
+.iconBackdropGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  transition: opacity 0.25s ease-out;
+}
+
+.cardTopBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  z-index: 2;
+}
+
+.avatarNum {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease-out;
+}
+
+.activeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: block;
+}
+
+.iconGraphicWrap {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s cubic-bezier(0.19, 1, 0.22, 1), color 0.2s ease-out;
+  z-index: 2;
+  margin: auto 0;
+}
+
+.cardServiceLabel {
+  font-size: 0.6875rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 95%;
+  z-index: 2;
+  transition: color 0.2s ease-out;
+}
+
+.pinnedPill {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2.5px;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 8px currentColor;
+  z-index: 3;
+}
+
+/* ─── MAGNETIC CURSOR FOLLOWER ─── */
+.magneticCursor {
+  width: 48px;
+  height: 48px;
+  pointer-events: none !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  transition: background-color 0.15s ease-out;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.magneticCursor * {
+  pointer-events: none !important;
+}
+
+/* ─── MASSIVE STAGGERED TYPOGRAPHY ─── */
+.typographyViewport {
+  position: relative;
+  width: 100%;
+  height: clamp(100px, 14vw, 160px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  z-index: 10;
+}
+
+.titleMotionWrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.mainTitle {
+  margin: 0;
+  user-select: none;
+  font-size: clamp(2.8rem, 7.6vw, 8.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  font-family: var(--font), system-ui, -apple-system, sans-serif;
+}
+
+.charSpan {
+  display: inline-block;
+  line-height: 1;
+  will-change: transform;
+}
+
+.defaultTitle {
+  color: #F1F1F1;
+}
+
+.hoverTitle {
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+/* ─── SERVICE DESCRIPTION (BOTTOM) ─── */
+.descriptionWrapper {
+  min-height: 38px;
+  max-width: 620px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+  margin: 0.15rem auto 0.65rem;
+}
+
+.serviceDescText {
+  margin: 0;
+  font-size: clamp(0.85rem, 1.1vw, 0.98rem);
+  line-height: 1.5;
+  color: rgba(241, 241, 241, 0.65);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ─── SECTION BOTTOM LINK ─── */
+.sectionBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding-bottom: 0;
+}
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(241, 241, 241, 0.55);
+  text-decoration: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease-out;
+}
+
+.exploreLink:hover {
+  color: #FFFFFF;
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+
+.linkArrow {
+  transition: transform 0.2s ease-out;
+}
+
+.exploreLink:hover .linkArrow {
+  transform: translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .skiper6Section {
+    height: auto;
+    min-height: 100vh;
+    padding: 4rem 1rem 3rem;
+  }
+
+  .typographyViewport {
+    height: 32vw;
+  }
+
+  .mainTitle {
+    font-size: clamp(2.2rem, 9.5vw, 5rem);
+  }
+
+  .avatarCard {
+    width: 78px;
+    height: 84px;
+    padding: 7px 4px 6px;
+  }
+
+  .iconGraphicWrap {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cardServiceLabel {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skiper6Section {
+    padding: 2.5rem 0.75rem 2rem;
+  }
+
+  .mainTitle {
+    font-size: clamp(1.8rem, 10vw, 3.2rem);
+  }
+
+  .typographyViewport {
+    height: 40vw;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatarCard {
+    width: 64px;
+    height: 72px;
+    padding: 5px 3px 5px;
+  }
+
+  .cardServiceLabel {
+    font-size: 0.5rem;
+  }
+}

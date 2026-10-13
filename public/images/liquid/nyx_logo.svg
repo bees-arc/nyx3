@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="35%" stop-color="#F1F5F9" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="blueDotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="dotGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Pure black background for max liquid refraction -->
+  <rect width="1200" height="600" fill="#000000" />
+
+  <!-- NYX Wordmark -->
+  <g transform="translate(240, 380)">
+    <text font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="280" letter-spacing="-8" fill="url(#chromeGrad)">
+      NYX
+    </text>
+    <!-- Iconic Blue Dot -->
+    <circle cx="640" cy="-210" r="32" fill="url(#blueDotGrad)" filter="url(#dotGlow)" />
+  </g>
+</svg>

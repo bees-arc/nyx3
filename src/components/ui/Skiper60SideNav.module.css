@@ -1,0 +1,138 @@
+/* ─── SKIPER 60: SIDE NAVIGATION (MINIMALIST AS IN SKIPER UI) ───
+   Adapted from Skiper UI (https://skiper-ui.com/v1/skiper60)
+   Vertically centered content, lighter elegant font weights.
+───────────────────────────────────────────────────────────────── */
+
+.wrapper {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1.5rem 0;
+  box-shadow: none;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 5rem;
+  align-items: center;
+  position: relative;
+  color: var(--ink, #1A1A18);
+  width: 100%;
+}
+
+/* Left: Minimalist Text-Only Navigation List */
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+  border-left: 2px solid #EBEBE6;
+  padding: 0.25rem 0;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.45rem 0 0.45rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  transition: color 0.18s ease;
+}
+
+.activeIndicator {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--nyx-blue, #2563EB);
+  border-radius: 2px;
+}
+
+.navItemTitle {
+  font-size: clamp(1.25rem, 1.55vw, 1.45rem);
+  font-weight: 400;
+  color: #8A8A84;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  transition: color 0.18s ease, font-weight 0.18s ease;
+  white-space: nowrap;
+}
+
+.navItem:hover .navItemTitle {
+  color: var(--ink, #1A1A18);
+}
+
+.navItemActive .navItemTitle {
+  color: var(--nyx-blue, #2563EB);
+  font-weight: 500;
+}
+
+/* Right: Clean Natural Text Display (Vertically Centered) */
+.contentWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.contentArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contentTitle {
+  font-size: clamp(1.65rem, 2.2vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--ink, #1A1A18);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.contentDesc {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4A4A46;
+  max-width: 720px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .navList {
+    border-left: none;
+    border-bottom: 2px solid #EBEBE6;
+    padding-bottom: 0.5rem;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+  }
+
+  .navItem {
+    padding: 0.5rem 0.85rem;
+  }
+
+  .navItemTitle {
+    font-size: 1.1rem;
+  }
+
+  .activeIndicator {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+  }
+}

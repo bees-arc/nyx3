@@ -1,0 +1,286 @@
+/* ─── WORK PROJECTS GRID (EDITORIAL CARDS) ─── */
+
+.wrapper {
+  width: 100%;
+}
+
+/* ─── FILTER TABS ─── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 3.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.filterBar::-webkit-scrollbar {
+  display: none;
+}
+
+.filterList {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.375rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filterBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--dark-muted-text, #A1A1AA);
+  border: none;
+  background: transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  z-index: 1;
+}
+
+.filterBtn:hover {
+  color: var(--white, #ffffff);
+}
+
+.filterBtnActive {
+  color: var(--white, #ffffff);
+  font-weight: 600;
+}
+
+.filterCount {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  padding: 0.1rem 0.45rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+.filterBtnActive .filterCount {
+  background: rgba(37, 99, 235, 0.35);
+  color: #93C5FD;
+}
+
+.filterIndicator {
+  position: absolute;
+  inset: 0;
+  background: var(--nyx-blue, #2563EB);
+  border-radius: 9999px;
+  z-index: -1;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+}
+
+/* ─── GRID LAYOUT ─── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+/* ─── CARD ─── */
+.card {
+  position: relative;
+  background: #141412;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(37, 99, 235, 0.25);
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #080807;
+  overflow: hidden;
+}
+
+.projectImg {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .projectImg {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 14, 12, 0.15) 0%, rgba(14, 14, 12, 0.65) 100%);
+  pointer-events: none;
+}
+
+/* Chips on Image */
+.imageTopChips {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.industryChip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(14, 14, 12, 0.75);
+  backdrop-filter: blur(8px);
+  color: var(--white, #ffffff);
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.yearChip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(14, 14, 12, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.outcomePill {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(14, 14, 12, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  z-index: 2;
+}
+
+.outcomeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nyx-blue, #2563EB);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.8);
+}
+
+.outcomeText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #DBEAFE;
+  letter-spacing: 0.02em;
+}
+
+/* Card Body */
+.cardBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.clientRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.clientName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nyx-blue, #2563EB);
+}
+
+.arrowIcon {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.3);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.card:hover .arrowIcon {
+  transform: translate(3px, -3px);
+  color: var(--nyx-blue, #2563EB);
+}
+
+.projectName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--white, #ffffff);
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.projectTagline {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--dark-muted-text, #A1A1AA);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Services Tags */
+.servicesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.serviceTag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.card:hover .serviceTag {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cardBody {
+    padding: 1.5rem;
+  }
+}

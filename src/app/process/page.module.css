@@ -1,0 +1,410 @@
+/* ─── PROCESS PAGE STYLES ─── */
+
+.hero {
+  padding: 160px 0 70px;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.heroTitle {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  max-width: 820px;
+}
+
+.heroItalic {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--nyx-blue);
+}
+
+.heroSub {
+  color: var(--muted);
+  max-width: 680px;
+  line-height: 1.65;
+}
+
+/* Vital Stats */
+.vitalStatsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--light-gray);
+  max-width: 900px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.statVal {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.statLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── SPRINT BREAKDOWN SECTION (DARK CANVAS) ─── */
+.sprintSection {
+  width: 100%;
+  background: #0E0E0C;
+  padding: 7rem 0 8.5rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.sprintHeader {
+  margin-bottom: 4.5rem;
+}
+
+.sprintList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.sprintCard {
+  background: #141412;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.sprintCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.phaseNumber {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nyx-blue, #2563EB);
+}
+
+.weekPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #D4D4D8;
+}
+
+.weekDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.phaseTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white, #ffffff);
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.phaseTagline {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--nyx-blue, #2563EB);
+  margin-bottom: 1.15rem;
+  line-height: 1.55;
+}
+
+.phaseSummary {
+  font-size: 0.925rem;
+  line-height: 1.7;
+  color: var(--dark-muted-text, #A1A1AA);
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+/* Daily Activities Box */
+.activitiesBox {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.boxTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8A8A84;
+  margin-bottom: 1rem;
+}
+
+.activitiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.activityDay {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--nyx-blue, #2563EB);
+  background: rgba(37, 99, 235, 0.15);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.activityTask {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #D4D4D8;
+}
+
+/* Deliverables Box */
+.deliverablesBox {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.deliverablesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.deliverableItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: #E4E4E7;
+}
+
+.checkIcon {
+  color: var(--nyx-blue, #2563EB);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ─── CLIENT & STUDIO COLLABORATION RHYTHM ─── */
+.collabSection {
+  padding: 6.5rem 0;
+  background: #FAFAFA;
+  border-top: 1px solid var(--light-gray);
+}
+
+.collabHeader {
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+}
+
+.collabGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.collabCard {
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 20px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.collabCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+}
+
+.collabIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.collabTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.collabDesc {
+  font-size: 0.925rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── PRINCIPLES SECTION ─── */
+.rulesHeader {
+  margin-bottom: 3.5rem;
+}
+
+.rulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.ruleCard {
+  padding: 2.5rem;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ruleNum {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--nyx-blue);
+}
+
+.ruleTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ruleDesc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ─── SPRINT FAQ (DARK CANVAS) ─── */
+.faqSection {
+  padding: 7rem 0 8rem;
+  background: #0E0E0C;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.faqHeader {
+  margin-bottom: 3.5rem;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.faqCard {
+  background: #141412;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faqQuestion {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white, #ffffff);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.faqAnswer {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--dark-muted-text, #A1A1AA);
+  margin: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 991px) {
+  .sprintList,
+  .rulesGrid,
+  .collabGrid,
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .vitalStatsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 130px 0 50px;
+  }
+
+  .sprintSection {
+    padding: 4rem 0 6rem;
+  }
+
+  .sprintCard {
+    padding: 2rem 1.75rem;
+  }
+}

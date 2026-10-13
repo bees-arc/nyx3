@@ -1,0 +1,205 @@
+/* ═══════════════════════════════════════════
+   Skiper12 Liquid Simulation Hero Section
+   Inspired by Vercel Ship Liquid Hero
+   ═══════════════════════════════════════════ */
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.heroContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1.25rem;
+  pointer-events: auto;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3B82F6;
+  box-shadow: 0 0 10px #3B82F6;
+}
+
+.heroHeadline {
+  font-size: clamp(2.4rem, 5.2vw, 4.75rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  max-width: 860px;
+  margin: 0 0 2.5rem;
+  color: #FFFFFF;
+  text-wrap: balance;
+}
+
+.headlineHighlight {
+  font-style: italic;
+  font-family: var(--font-serif, Georgia, serif);
+  font-weight: 400;
+  color: #60A5FA;
+}
+
+.heroMetaBar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .heroMetaBar {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.metaGroup {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+  text-transform: uppercase;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.metaItem {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.metaItemMuted {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.actionGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+}
+
+/* Hide meta text on mobile — keep only the CTA button */
+.hideOnMobile {
+  display: flex;
+}
+
+.ctaBtn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-weight: 600;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaBtn:hover {
+  background-color: #3B82F6;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.45);
+}
+
+.outlineBtn {
+  pointer-events: auto;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.outlineBtn:hover {
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .heroWrapper {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .heroContent {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .heroHeadline {
+    font-size: clamp(1.9rem, 9.5vw, 2.8rem);
+    margin-bottom: 1.75rem;
+    line-height: 1;
+  }
+
+  .heroBadge {
+    font-size: 0.6875rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .heroMetaBar {
+    gap: 1rem;
+  }
+
+  /* Hide all meta text — only show CTA button */
+  .hideOnMobile {
+    display: none !important;
+  }
+
+  .actionGroup {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ctaBtn {
+    padding: 0.75rem 1.35rem;
+    font-size: 0.8125rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .heroHeadline {
+    font-size: clamp(1.6rem, 9vw, 2.2rem);
+  }
+}

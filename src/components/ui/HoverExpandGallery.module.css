@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════
+   Skiper35 Exact 1:1 CSS Styles from skiper-ui.com/v1/skiper35
+   Background: #121212 | Text: #F1F1F1 | Large font size
+   ═══════════════════════════════════════════ */
+
+.skiperSection {
+  height: 600px;
+  width: 100%;
+  background-color: #121212;
+  color: #F1F1F1;
+  position: relative;
+  overflow: hidden;
+}
+
+.skiperContainer {
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.skiperContainer::-webkit-scrollbar {
+  height: 4px;
+}
+
+.skiperContainer::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.skiperRow {
+  margin: 0 auto;
+  display: flex;
+  width: fit-content;
+  min-width: min-content;
+  height: 100%;
+  flex-direction: row;
+}
+
+.panel {
+  position: relative;
+  height: 100%;
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.panel:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panel:last-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 
+  Exact Skiper35 label row:
+  text-xl font-medium leading-[2.6vw] tracking-[-0.03em] md:-rotate-90 md:text-[2vw]
+*/
+.labelRow {
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  display: flex;
+  width: calc(600px - 2.6vw);
+  transform-origin: 0 50%;
+  transform: rotate(-90deg);
+  justify-content: space-between;
+  padding-right: 1.5rem;
+  font-size: clamp(1.25rem, 1.8vw, 2rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-family: var(--font);
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.itemLabel {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.itemYear {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/*
+  Exact Skiper35 image container:
+  h-[92%] rounded-[0.6vw] object-cover pl-2 pr-[1.3vw] pt-[1.3vw] md:h-[100%] md:pb-[1.3vw] md:pl-[4vw]
+*/
+.imageContainer {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.6vw;
+  padding-top: 1.3vw;
+  padding-right: 1.3vw;
+  padding-bottom: 1.3vw;
+  padding-left: 4.5vw;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.panelImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  display: block;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .skiperSection {
+    height: auto;
+  }
+
+  .skiperContainer {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .skiperRow {
+    flex-direction: column;
+    min-width: unset;
+    height: auto;
+  }
+
+  .panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .labelRow {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    transform: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .imageContainer {
+    height: 420px;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,156 @@
+.footer {
+  background: var(--dark-bg);
+  color: var(--white);
+  padding: 5rem 0 0;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--page-px);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.tagline {
+  font-size: 0.9375rem;
+  color: var(--dark-muted-text);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-muted-text);
+  transition: all 0.2s ease;
+}
+
+.socialLink:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: var(--white);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Nav groups */
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.navGroupLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-muted-text);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.navLink {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--white);
+}
+
+.ctaWrap { margin-top: 0.5rem; }
+
+/* Bottom */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  color: var(--dark-muted-text);
+}
+
+.legal {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.legalLink {
+  font-size: 0.875rem;
+  color: var(--dark-muted-text);
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: rgba(255,255,255,0.6);
+}
+
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .brand { grid-column: unset; }
+
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
