@@ -87,7 +87,7 @@ export default function Home() {
 
 
       {/* ─── CASE STUDY SPOTLIGHT ─── */}
-      <section className="section section--ink">
+      <section className={`section ${styles.spotlightSection}`}>
         <div className="container">
           <div className={styles.spotlightHeader}>
             {/* <span className="section-label section-label--neutral">Featured Result</span> */}
@@ -107,7 +107,7 @@ export default function Home() {
               <div className={`${styles.spotlightBlock} ${styles.spotlightSolution}`}>
                 <p className={styles.spotlightBlockLabel}>The NYX-SaaS Solution</p>
                 <p className="t-body" style={{ color: 'rgba(255,255,255,0.75)' }}>
-                  A complete redesign — restructured for how clients think, not how
+                  A complete redesign, restructured for how clients think, not how
                   lawyers think. Benefit-led, trust-building, and conversion-focused.
                 </p>
               </div>

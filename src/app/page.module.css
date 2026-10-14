@@ -762,6 +762,11 @@
 
 /* ─── SPOTLIGHT ─── */
 
+.spotlightSection {
+  background: #000000 !important;
+  color: var(--white);
+}
+
 .spotlightHeader {
   margin-bottom: 3.5rem;
   display: flex;
@@ -785,7 +790,8 @@
 .spotlightBlock {
   padding: 2rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--dark-border);
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .spotlightBlockLabel {
@@ -799,9 +805,9 @@
 
 .spotlightRight {
   padding: 2rem;
-  background: rgba(255,255,255,0.03);
+  background: #080808;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--dark-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .spotlightOutcomeLabel {
