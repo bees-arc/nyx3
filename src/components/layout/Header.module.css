@@ -8,7 +8,7 @@
   opacity: 1;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
   background: #000000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 2px solid #ffffff;
   will-change: transform, opacity;
 }
 
@@ -22,8 +22,8 @@
   background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+  border-bottom: 2px solid #ffffff;
+  box-shadow: none;
 }
 
 .inner {

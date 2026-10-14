@@ -29,9 +29,9 @@ const principles: PrincipleItem[] = [
     icon: '◎',
     num: '01',
     title: 'Business-first design',
-    shortDesc: 'Every design decision is tied to a business goal — not just aesthetics.',
+    shortDesc: 'Every design decision is tied to a business goal, not just aesthetics.',
     fullDesc:
-      'Every design decision is tied to a business goal — not just aesthetics. We prioritize metrics, user journeys, and revenue impact over superficial trends. Every layout element, color accent, and typography scale exists to communicate value and convert visitors into clients.',
+      'Every design decision is tied to a business goal, not just aesthetics. We prioritize metrics, user journeys, and revenue impact over superficial trends. Every layout element, color accent, and typography scale exists to communicate value and convert visitors into clients.',
     highlights: ['ROI-Driven Strategy', 'Measurable Conversion Lift', 'Clear Customer Intent'],
   },
   {
@@ -41,7 +41,7 @@ const principles: PrincipleItem[] = [
     title: 'Custom experiences',
     shortDesc: 'No templates. No shortcuts. Every project is built specifically for you.',
     fullDesc:
-      'No templates. No shortcuts. Every project is built specifically for you — handcrafted layouts, tailored typography hierarchy, bespoke interactive shaders, and distinct brand identities that set you apart from competitors using generic theme builders.',
+      'No templates. No shortcuts. Every project is built specifically for you, handcrafted layouts, tailored typography hierarchy, bespoke interactive shaders, and distinct brand identities that set you apart from competitors using generic theme builders.',
     highlights: ['100% Bespoke Craft', 'Fluid Physics & Motion', 'Unique Brand Authority'],
   },
   {
@@ -49,9 +49,9 @@ const principles: PrincipleItem[] = [
     icon: '◉',
     num: '03',
     title: 'Conversion-focused thinking',
-    shortDesc: 'We design for visitors to take action — not just to look at the page.',
+    shortDesc: 'We design for visitors to take action not just to look at the page.',
     fullDesc:
-      'We design for visitors to take action — not just to look at the page. Clear CTAs, frictionless pathways, and compelling copy hierarchy ensure visitors know exactly what to do next without second-guessing or getting lost.',
+      'We design for visitors to take action not just to look at the page. Clear CTAs, frictionless pathways, and compelling copy hierarchy ensure visitors know exactly what to do next without second-guessing or getting lost.',
     highlights: ['Frictionless User Journeys', 'High-Converting CTAs', 'Behavioral Architecture'],
   },
   {
@@ -87,24 +87,37 @@ const principles: PrincipleItem[] = [
 ];
 
 export default function Skiper60SideNav() {
-  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const [selectedIdx, setSelectedIdx] = useState<number>(0);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  const activeIdx = hoveredIdx !== null ? hoveredIdx : selectedIdx;
   const activeItem = principles[activeIdx];
 
   return (
     <div className={styles.wrapper}>
       {/* Left: Clickable Side Titles */}
-      <div className={styles.navList} role="tablist" aria-label="Core Principles">
+      <div
+        className={styles.navList}
+        role="tablist"
+        aria-label="Core Principles"
+        onMouseLeave={() => setHoveredIdx(null)}
+      >
         {principles.map((item, index) => {
           const isActive = activeIdx === index;
+          const isSelected = selectedIdx === index;
 
           return (
             <button
               key={item.id}
               type="button"
               role="tab"
-              aria-selected={isActive}
+              aria-selected={isSelected}
               className={`${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
-              onClick={() => setActiveIdx(index)}
+              onMouseEnter={() => setHoveredIdx(index)}
+              onClick={() => {
+                setSelectedIdx(index);
+                setHoveredIdx(index);
+              }}
             >
               {/* Active indicator bar */}
               {isActive && (
@@ -126,10 +139,10 @@ export default function Skiper60SideNav() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeItem.id}
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className={styles.contentArea}
           >
             <h3 className={styles.contentTitle}>{activeItem.title}</h3>
